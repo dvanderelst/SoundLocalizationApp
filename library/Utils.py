@@ -33,5 +33,4 @@ def update_difficulty_and_trial(correct):
     if difficulty < 1: difficulty = 1
     if difficulty > 3: difficulty = 3
     Statemanagment.update_state('difficulty', difficulty)
-    trial = Statemanagment.get_state('trial')
-    Statemanagment.update_state('trial', trial)
+    Statemanagment.increment_state('trial', 1)

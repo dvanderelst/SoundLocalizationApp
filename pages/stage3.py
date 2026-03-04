@@ -20,7 +20,7 @@ if confirm and response:
     correct = str(correct)
     Statemanagment.append_state('trial_history', other_key='trial')
     Statemanagment.append_state('difficulty_history', other_key='difficulty')
-    Statemanagment.append_state('side_history', other_key='trial')
+    Statemanagment.append_state('side_history', other_key='side')
     Statemanagment.append_state('response_history', response)
     Statemanagment.append_state('correct_history', correct)
 
@@ -32,4 +32,5 @@ if confirm and response:
 
     # prepare next trials and switch page
     Utils.update_difficulty_and_trial(correct)
+    Statemanagment.update_state('side', None) # This allows the next iteration to select a new random side
     st.switch_page('pages/stage1.py')
