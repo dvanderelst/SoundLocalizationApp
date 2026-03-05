@@ -9,6 +9,7 @@ sound_was_played = Statemanagment.get_state('sound_played') > 0
 st.header('Step 1: speaker at center', text_alignment='center')
 st.text(f'Trial {trial} of {number_of_trials}', text_alignment='center', width='stretch')
 st.text('Place the speaker in the center and play the sound once.', text_alignment='center', width='stretch')
+st.header('➡️⬅️', text_alignment='center', width='stretch')
 play = st.button('Play sound', width='stretch')
 confirm = st.button("Next", width='stretch', disabled= not sound_was_played)
 

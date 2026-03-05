@@ -13,8 +13,8 @@ if confirm and response:
     # Store current trial data
     correct  = response.lower() == Statemanagment.get_state('side')
     feedback = 'Correct!' if correct else 'Incorrect!'
-
-    st.header(feedback)
+    if correct: st.header('😄 ' + feedback)
+    if not correct: st.header('😭 ' + feedback)
     time.sleep(2)
 
     correct = str(correct)

@@ -11,19 +11,11 @@ def play_sound():
 
 
 def display_arrows(side, difficulty):
-    col1, col2, col3, col4, col5, col6 = st.columns([1, 1, 1, 1, 1, 1])
-    if side == 'left':
-        with col3: st.image("resources/left.png")
-        if difficulty < 3:
-            with col2: st.image("resources/left.png")
-        if difficulty < 2:
-            with col1: st.image("resources/left.png")
-    if side == 'right':
-        with col4: st.image("resources/right.png")
-        if difficulty < 3:
-            with col5: st.image("resources/right.png")
-        if difficulty < 2:
-            with col6: st.image("resources/right.png")
+    col1, col2 = st.columns([1, 1])
+    multiplier = 4 - difficulty
+    if side == 'left': st.header('⬅️'* multiplier, text_alignment='center', width='stretch')
+    if side == 'right': st.header('➡️' * multiplier, text_alignment='center', width='stretch')
+
 
 
 def update_difficulty_and_trial(correct):

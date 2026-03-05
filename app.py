@@ -1,6 +1,9 @@
 import streamlit as st
 from library import Statemanagment
-from library import Utils
+import streamlit_themes as st_themes
+
+# Directly apply a preset theme
+st_themes.set_preset_theme('Sandy')
 
 variables = {}
 
