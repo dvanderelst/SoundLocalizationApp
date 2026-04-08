@@ -4,8 +4,8 @@ from library import Statemanagment
 import pandas as pd
 
 def play_sound():
-    with open("resources/sound.mp3", "rb") as audio_file: audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format="audio/mp3", autoplay=True)
+    with open("resources/sound.wav", "rb") as audio_file: audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format="audio/wav", autoplay=True)
     time.sleep(2)
     st.rerun()
 
