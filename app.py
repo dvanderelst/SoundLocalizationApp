@@ -24,9 +24,11 @@ Statemanagment.init_state(variables)
 with st.form("settings_form"):
     participant = st.text_input("Participant name:")
     condition = st.radio("Condition:", ("Real ears", "Artificial ears"))
+    number_of_trials = st.number_input("Number of trials:", min_value=1, value=3, step=1)
     if st.form_submit_button("Start"):
         Statemanagment.update_state('participant', participant)
         Statemanagment.update_state('condition', condition)
+        Statemanagment.update_state('number_of_trials', number_of_trials)
         Statemanagment.update_state('trial', 1)
         st.switch_page('pages/stage1.py')
 

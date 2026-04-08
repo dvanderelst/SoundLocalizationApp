@@ -13,7 +13,7 @@ side = Statemanagment.get_state('side')
 
 st.header('Step 2: speaker at side', text_alignment='center')
 st.text(f'Place the speaker on the {side} at difficulty {difficulty} and play the sound once', text_alignment='center', width='stretch')
-Utils.display_arrows(side, difficulty)
+Utils.display_diagram(side, difficulty)
 play = st.button('Play sound', width='stretch')
 confirm = st.button("Next", width='stretch', disabled= not sound_was_played)
 

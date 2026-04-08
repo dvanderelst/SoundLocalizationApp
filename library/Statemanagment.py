@@ -58,7 +58,6 @@ def build_dataframe(variables):
     for variable in variables:
         values = get_state(variable)
         data[variable] = values
-        print(values)
     data = pandas.DataFrame(data)
     return data
 
