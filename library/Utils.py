@@ -58,7 +58,7 @@ def display_arrows(side, difficulty):
     if side == 'right': st.header('➡️' * multiplier, text_alignment='center', width='stretch')
 
 def display_diagram(side, difficulty):
-    image = 'center.png'
+    image = 'resources/center.png'
     if side == 'left': image = f'resources/level{difficulty}L.png'
     if side == 'right': image = f'resources/level{difficulty}R.png'
     st.image(image, width='stretch')

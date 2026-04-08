@@ -26,6 +26,8 @@ with st.form("settings_form"):
     condition = st.radio("Condition:", ("Real ears", "Artificial ears"))
     number_of_trials = st.number_input("Number of trials:", min_value=1, value=3, step=1)
     if st.form_submit_button("Start"):
+        Statemanagment.reset_state()
+        Statemanagment.init_state(variables)
         Statemanagment.update_state('participant', participant)
         Statemanagment.update_state('condition', condition)
         Statemanagment.update_state('number_of_trials', number_of_trials)
