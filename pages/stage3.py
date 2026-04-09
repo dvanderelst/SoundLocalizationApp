@@ -16,6 +16,14 @@ st.markdown(f"<h3 style='text-align: center; margin-bottom: 20px;'>{label}</h3>"
 if 'temp_selection' not in st.session_state:
     st.session_state.temp_selection = None
 
+st.markdown("""
+<style>
+[data-testid="stHorizontalBlock"] {
+    flex-wrap: nowrap !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 col1, col2 = st.columns(2)
 with col1:
     st.image('resources/point_left.png', use_container_width=True)
