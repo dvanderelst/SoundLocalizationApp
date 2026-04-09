@@ -5,6 +5,7 @@ from library import Utils
 participant = Statemanagment.get_state('participant')
 
 st.header('Step 3: Record response', text_alignment='center')
+st.text(f'Ask {participant} to respond which side the speaker was moved to.')
 label = f"What was {participant}'s response?"
 
 # Initialize response variable at the top
@@ -18,14 +19,17 @@ if 'temp_selection' not in st.session_state:
 col1, col2 = st.columns(2)
 with col1:
     st.image('resources/point_left.png', use_container_width=True)
-    if st.button("Speaker moved to left", use_container_width=True, key="btn_left",
+with col2:
+    st.image('resources/point_right.png', use_container_width=True)
+
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("Speaker was moved to left!", use_container_width=True, key="btn_left",
                  type="primary" if st.session_state.temp_selection == 'Left' else "secondary"):
         st.session_state.temp_selection = 'Left'
         st.rerun()
-
 with col2:
-    st.image('resources/point_right.png', use_container_width=True)
-    if st.button("Speaker moved to right", use_container_width=True, key="btn_right",
+    if st.button("Speaker was moved to right!", use_container_width=True, key="btn_right",
                  type="primary" if st.session_state.temp_selection == 'Right' else "secondary"):
         st.session_state.temp_selection = 'Right'
         st.rerun()
