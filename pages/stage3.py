@@ -13,7 +13,7 @@ if Statemanagment.get_state('side') is None:
 
 response = None
 st.image('resources/pointing.png', width='stretch')
-options = ["Speaker was moved to right!", "Speaker was moved to left!"]
+options = ["Right!", "Left!"]
 trial_key = f'response_{Statemanagment.get_state("trial")}'
 selection_label = st.segmented_control('Response', options, key=trial_key, width='stretch', label_visibility='hidden')
 if selection_label and 'right' in selection_label: response = 'right'
