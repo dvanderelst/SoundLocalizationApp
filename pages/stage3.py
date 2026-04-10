@@ -16,8 +16,8 @@ st.image('resources/pointing.png', width='stretch')
 options = ["Right!", "Left!"]
 trial_key = f'response_{Statemanagment.get_state("trial")}'
 selection_label = st.segmented_control('Response', options, key=trial_key, width='stretch', label_visibility='hidden')
-if selection_label and 'right' in selection_label: response = 'right'
-if selection_label and 'left' in selection_label: response = 'left'
+if selection_label and 'right' in selection_label.lower(): response = 'right'
+if selection_label and 'left' in selection_label.lower(): response = 'left'
 
 # Confirmation button (only enabled once a selection is made)
 confirm = st.button("Confirm Selection", disabled=response is None, use_container_width=True)
