@@ -42,6 +42,10 @@ elif st.session_state.show_commit_form:
             st.session_state.show_commit_form = False
             st.rerun()
 
+    if st.session_state.get('commit_error'):
+        st.error(f"Failed to commit: {st.session_state.commit_error}")
+        st.session_state.commit_error = None
+
     if st.session_state.submitting:
         with st.spinner("Committing to database..."):
             run_id = str(uuid.uuid4())
@@ -51,7 +55,7 @@ elif st.session_state.show_commit_form:
                 st.session_state.committed = True
                 st.session_state.show_commit_form = False
             except Exception as e:
-                st.error(f"Failed to commit: {e}")
+                st.session_state.commit_error = str(e)
             finally:
                 st.session_state.submitting = False
         st.rerun()
