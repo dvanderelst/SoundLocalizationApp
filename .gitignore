@@ -2,3 +2,5 @@
 __pycache__/
 
 create_diagrams/
+
+.streamlit/secrets.toml
