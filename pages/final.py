@@ -11,6 +11,19 @@ dataframe['participant'] = participant
 dataframe['condition'] = condition
 
 st.header('Final Results')
+
+# --- Localization score ---
+# Each correct trial is worth its difficulty in points (green=1, orange=2, red=3).
+correct_mask = dataframe['correct_history'] == 'True'
+score = int(dataframe.loc[correct_mask, 'difficulty_history'].sum())
+max_score = int(dataframe['difficulty_history'].sum())
+n_correct = int(correct_mask.sum())
+n_trials = len(dataframe)
+
+st.metric(f"Localization score ({condition})", f"{score} / {max_score}")
+st.caption(f"{n_correct} of {n_trials} trials correct. "
+           "Points per correct trial: green = 1, orange = 2, red = 3.")
+
 st.dataframe(dataframe)
 
 csv = dataframe.to_csv(index=False)
