@@ -1,0 +1,8 @@
+[tools]
+python = "3.12.8"
+
+[settings]
+# python-build-standalone tarballs that mise resolves aren't accompanied by
+# GitHub artifact attestations it can verify in the Railway build sandbox,
+# which aborts the install. Disable that verification step.
+python.github_attestations = false
