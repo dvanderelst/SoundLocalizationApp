@@ -1,5 +1,6 @@
 import streamlit as st
 from library import Statemanagment
+from library import Utils
 
 variables = {}
 
@@ -20,6 +21,9 @@ variables['response_history'] = []
 variables['correct_history'] = []
 
 Statemanagment.init_state(variables)
+
+with st.expander("📖 Instructions"):
+    Utils.render_markdown_file("student_instructions.md")
 
 with st.form("settings_form"):
     participant = st.text_input("Participant name:")

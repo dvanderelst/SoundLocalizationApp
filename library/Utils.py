@@ -1,8 +1,41 @@
 import streamlit as st
 import time
 import base64
+import os
+import re
 from library import Statemanagment
 import pandas as pd
+
+
+def render_markdown_file(path):
+    """Render a markdown file, displaying any local images via st.image.
+
+    Streamlit's st.markdown does not load local image files, so we split the
+    document on markdown image references (![alt](path)) and render the text
+    chunks with st.markdown and the images with st.image. This lets the .md
+    file be the single source of truth for the instructions.
+    """
+    with open(path, "r", encoding="utf-8") as f:
+        text = f.read()
+    base_dir = os.path.dirname(os.path.abspath(path))
+    image_pattern = re.compile(r'!\[[^\]]*\]\(<?([^)>]+)>?\)')
+
+    last = 0
+    for match in image_pattern.finditer(text):
+        before = text[last:match.start()]
+        if before.strip():
+            st.markdown(before)
+        img_path = match.group(1).strip()
+        full_path = img_path if os.path.isabs(img_path) else os.path.join(base_dir, img_path)
+        if os.path.exists(full_path):
+            st.image(full_path)
+        else:
+            st.markdown(match.group(0))  # leave reference as-is if file is missing
+        last = match.end()
+
+    rest = text[last:]
+    if rest.strip():
+        st.markdown(rest)
 
 
 def get_image_base64(image_path):
